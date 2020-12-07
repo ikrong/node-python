@@ -5,7 +5,9 @@ LABEL maintainer ikrong <contact@ikrong.com>
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk update && apk upgrade && \
-    apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python
+    apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm /var/cache/apk/*
 
 VOLUME /git
 WORKDIR /git
